@@ -1,0 +1,26 @@
+.kkb-start {
+  &--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 30px;
+  }
+
+  &--header {
+    color: #48494b;
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    -webkit-text-stroke: #48494b;
+  }
+
+  &--button {
+    position: relative;
+    width: 10rem;
+    height: 3rem;
+    margin-top: 1rem;
+    top: -200px;
+  }
+}
