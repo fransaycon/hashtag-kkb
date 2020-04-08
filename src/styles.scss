@@ -9,3 +9,27 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.container {
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex: 1;
+    margin: auto;
+    max-width: 600px;
+    padding: 1rem;
+    height: inherit;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    &--center {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &--full {
+    height: 100vh;
+  }
+}
