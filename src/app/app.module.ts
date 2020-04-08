@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { KkbStartComponent } from './kkb-start/kkb-start.component';
+import { AtomsComponent } from './atoms/atoms.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KkbStartComponent,
+    AtomsComponent
   ],
   imports: [
     BrowserModule,
