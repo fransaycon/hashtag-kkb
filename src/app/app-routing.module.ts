@@ -9,9 +9,14 @@ const appRoutes: Routes = [
       import('./homepage/homepage.module').then((m) => m.HomepageModule),
   },
   {
-    path: 'add-users',
+    path: routes.ADD_USERS,
     loadChildren: () =>
       import('./add-users/add-users.module').then((m) => m.AddUsersModule),
+  },
+  {
+    path: routes.DASHBOARD,
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
 ];
 
