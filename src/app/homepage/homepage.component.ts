@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import routes from '../routes';
 
 @Component({
   selector: 'app-homepage',
@@ -7,7 +6,7 @@ import routes from '../routes';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  addUserRoute: string = routes.ADD_USERS;
+  addUserRoute: string = 'add-users';
 
   constructor() {}
 

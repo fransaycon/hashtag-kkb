@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { CartComponent } from '../cart/cart.component';
 
+import { BillComponent } from './bill/bill.component';
+import { CartComponent } from './cart/cart.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
-  declarations: [DashboardComponent, CartComponent],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule
-  ]
+  declarations: [
+    BillComponent,
+    CartComponent,
+    DashboardComponent,
+    UsersComponent,
+  ],
+  imports: [CommonModule, DashboardRoutingModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}

@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import routes from './routes';
 
 const appRoutes: Routes = [
   {
-    path: routes.HOMEPAGE,
+    path: '',
     loadChildren: () =>
       import('./homepage/homepage.module').then((m) => m.HomepageModule),
   },
   {
-    path: routes.ADD_USERS,
+    path: 'add-users',
     loadChildren: () =>
       import('./add-users/add-users.module').then((m) => m.AddUsersModule),
   },
   {
-    path: routes.DASHBOARD,
+    path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./payment/payment.module').then((m) => m.PaymentModule),
   },
 ];
 
