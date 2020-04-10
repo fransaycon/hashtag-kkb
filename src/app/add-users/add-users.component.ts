@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-kkb-users',
-  templateUrl: './kkb-users.component.html',
-  styleUrls: ['./kkb-users.component.scss'],
+  selector: 'app-add-users',
+  templateUrl: './add-users.component.html',
+  styleUrls: ['./add-users.component.scss'],
 })
-export class KkbUsersComponent implements OnInit {
+export class AddUsersComponent implements OnInit {
   value: string = '';
   users: Array<string> = [];
   constructor() {}

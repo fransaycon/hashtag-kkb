@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KkbUsersComponent } from './kkb-users.component';
+import { AddUsersComponent } from './add-users.component';
 
-describe('KkbUsersComponent', () => {
-  let component: KkbUsersComponent;
-  let fixture: ComponentFixture<KkbUsersComponent>;
+describe('AddUsersComponent', () => {
+  let component: AddUsersComponent;
+  let fixture: ComponentFixture<AddUsersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KkbUsersComponent ]
+      declarations: [ AddUsersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KkbUsersComponent);
+    fixture = TestBed.createComponent(AddUsersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

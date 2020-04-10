@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import routes from '../routes';
 
 @Component({
-  selector: 'app-kkb-start',
-  templateUrl: './kkb-start.component.html',
-  styleUrls: ['./kkb-start.component.scss'],
+  selector: 'app-homepage',
+  templateUrl: './homepage.component.html',
+  styleUrls: ['./homepage.component.scss'],
 })
-export class KkbStartComponent implements OnInit {
+export class HomepageComponent implements OnInit {
   addUserRoute: string = routes.ADD_USERS;
 
   constructor() {}
