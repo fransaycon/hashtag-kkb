@@ -7,10 +7,16 @@ import { CartComponent } from './cart/cart.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'bill', component: BillComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'users', component: UsersComponent },
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: CartComponent },
+      { path: 'bill', component: BillComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'users', component: UsersComponent },
+    ],
+  },
 ];
 
 @NgModule({

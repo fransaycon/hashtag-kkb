@@ -1,54 +1,50 @@
-<div class="container container--full">
-  <div class="container__content">
-    <h2 class="header">#Sinu-sino kayo?</h2>
-    <div class="add-users">
-      <mat-form-field
-        appearance="outline"
-        class="add-users__form"
-        (submit)="addUser()"
-      >
-        <mat-label>Isulat ang Pangalan</mat-label>
-        <input
-          matInput
-          (keydown.enter)="addUser()"
-          (keydown.esc)="value = ''"
-          [(ngModel)]="value"
-        />
-        <button
-          mat-button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
+<h2 class="header">#Sinu-sino kayo?</h2>
+<div class="add-users">
+  <mat-form-field
+    appearance="outline"
+    class="add-users__form"
+    (submit)="addUser()"
+  >
+    <mat-label>Isulat ang Pangalan</mat-label>
+    <input
+      matInput
+      (keydown.enter)="addUser()"
+      (keydown.esc)="value = ''"
+      [(ngModel)]="value"
+    />
+    <button
+      mat-button
+      *ngIf="value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button
+    mat-button
+    mat-icon-button
+    aria-label="Add user to list"
+    [disabled]="!value"
+    (click)="addUser()"
+  >
+    <mat-icon class="add-users__button">add_circle</mat-icon>
+  </button>
+</div>
+<mat-list class="list">
+  <mat-list-item class="list__item" *ngFor="let user of users">
+    <div class="list__item">
+      <span>{{ user }}</span>
       <button
         mat-button
         mat-icon-button
-        aria-label="Add user to list"
-        [disabled]="!value"
-        (click)="addUser()"
+        aria-label="Remove user from list"
+        (click)="removeUser(user)"
       >
-        <mat-icon class="add-users__button">add_circle</mat-icon>
+        <mat-icon class="list__button">cancel</mat-icon>
       </button>
     </div>
-    <mat-list class="list">
-      <mat-list-item class="list__item" *ngFor="let user of users">
-        <div class="list__item">
-          <span>{{ user }}</span>
-          <button
-            mat-button
-            mat-icon-button
-            aria-label="Remove user from list"
-            (click)="removeUser(user)"
-          >
-            <mat-icon class="list__button">cancel</mat-icon>
-          </button>
-        </div>
-      </mat-list-item>
-    </mat-list>
-  </div>
-</div>
+  </mat-list-item>
+</mat-list>

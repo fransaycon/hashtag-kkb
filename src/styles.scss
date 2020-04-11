@@ -12,16 +12,16 @@ body {
 
 .container {
   display: flex;
+  box-sizing: border-box;
 
   &__content {
     display: flex;
     flex: 1;
     margin: auto;
     max-width: 600px;
-    padding: 1rem;
     height: inherit;
     flex-direction: column;
-    box-sizing: border-box;
+    box-sizing: inherit;
 
     &--center {
       align-items: center;
