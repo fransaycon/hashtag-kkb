@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { UsersComponent } from './users/users.component';
+import { UserService } from '../services/users/user.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { UsersComponent } from './users/users.component';
     CartComponent,
     DashboardComponent,
     UsersComponent,
+  ],
+  providers: [
+    UserService,
   ],
   imports: [CommonModule,
     DashboardRoutingModule,

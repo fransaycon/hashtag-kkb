@@ -36,7 +36,7 @@
 <mat-list class="list">
   <mat-list-item class="list__item" *ngFor="let user of users">
     <div class="list__item">
-      <span>{{ user }}</span>
+      <span>{{ user.getName() }}</span>
       <button
         mat-button
         mat-icon-button

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { UserService } from 'src/app/services/users/user.service';
+import User from 'src/app/services/users/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -6,24 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+  users: User[];
+  usersChangedSubscription: Subscription;
   value: string = '';
-  users: Array<string> = [];
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor(private userService: UserService) {}
 
-  addUser(): void {
-    if (!!this.value) {
-      if (!this.users.includes(this.value)) {
-        this.users = [...this.users, this.value];
-        this.value = '';
-      } else {
-        window.alert('Teka lang! May kapangalan ang dinagdag mo. Dapat wala.');
+  ngOnInit(): void {
+    this.users = this.userService.getUsers();
+    this.usersChangedSubscription = this.userService.usersChanged.subscribe(
+      (users: User[]) => {
+        this.users = users;
       }
-    }
+    );
   }
 
-  removeUser(user: string): void {
-    this.users = this.users.filter((u) => u !== user);
+  ngOnDestroy(): void {
+    this.usersChangedSubscription.unsubscribe();
+  }
+
+  addUser() {
+    this.userService.addUser(this.value);
+    this.value = '';
+  }
+
+  removeUser(user: User) {
+    this.userService.removeUser(user);
   }
 }
