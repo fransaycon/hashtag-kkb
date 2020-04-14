@@ -8,11 +8,6 @@ const appRoutes: Routes = [
       import('./homepage/homepage.module').then((m) => m.HomepageModule),
   },
   {
-    path: 'add-users',
-    loadChildren: () =>
-      import('./add-users/add-users.module').then((m) => m.AddUsersModule),
-  },
-  {
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),

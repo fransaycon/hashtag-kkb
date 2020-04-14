@@ -6,12 +6,13 @@ import { BillComponent } from './bill/bill.component';
 import { CartComponent } from './cart/cart.component';
 import { UsersComponent } from './users/users.component';
 
+
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', component: CartComponent },
+      { path: '', component: UsersComponent },
       { path: 'bill', component: BillComponent },
       { path: 'cart', component: CartComponent },
       { path: 'users', component: UsersComponent },

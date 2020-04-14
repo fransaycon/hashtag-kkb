@@ -1,0 +1,38 @@
+.header {
+    color: #48494b;
+    font-weight: 600;
+  }
+  
+  .add-bar {
+    display: flex;
+    align-items: center;
+  
+    &__form {
+      height: 60px;
+      width: 90%;
+    }
+  
+    &__button {
+      color: purple;
+      font-size: 1.75rem;
+    }
+  }
+  
+  .list {
+    padding-right: 2.5rem;
+    height: 65vh;
+    overflow-y: scroll;
+  
+    &__item {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      word-break: break-word;
+    }
+    &__button {
+      color: red;
+      font-size: 1.5rem;
+    }
+  }
+  
