@@ -1,38 +1,49 @@
 .header {
-    color: #48494b;
-    font-weight: 600;
+  color: #48494b;
+  font-weight: 600;
+}
+
+.add-bar {
+  display: flex;
+  align-items: center;
+
+  &__form {
+    height: 60px;
+    width: 90%;
   }
-  
-  .add-bar {
+
+  &__button {
+    color: purple;
+    font-size: 1.75rem;
+  }
+}
+
+.list {
+  padding-right: 2.5rem;
+  height: 60vh;
+  overflow-y: auto;
+
+  &__item {
     display: flex;
+    flex: 1;
     align-items: center;
-  
-    &__form {
-      height: 60px;
-      width: 90%;
-    }
-  
-    &__button {
-      color: purple;
-      font-size: 1.75rem;
-    }
+    justify-content: space-between;
+    word-break: break-word;
   }
-  
-  .list {
-    padding-right: 2.5rem;
-    height: 65vh;
-    overflow-y: scroll;
-  
-    &__item {
-      display: flex;
-      flex: 1;
-      align-items: center;
-      justify-content: space-between;
-      word-break: break-word;
-    }
-    &__button {
-      color: red;
-      font-size: 1.5rem;
-    }
+  &__button {
+    color: red;
+    font-size: 1.25rem;
   }
-  
+}
+
+.order {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    margin-top: 0.33rem;
+    font-size: 1.25rem;
+  }
+}

@@ -1,7 +1,15 @@
-.content {
+.container {
+  display: flex;
+  flex: 1;
   height: 90vh;
   min-height: 500px;
   overflow-y: auto;
+
+  &__content {
+    margin: 1rem;
+    height: calc(100% - 2rem);
+    width: calc(100% - 2rem);
+  }
 }
 
 .navigation {
@@ -16,9 +24,20 @@
     align-items: center;
     justify-content: center;
     height: inherit;
+    text-decoration: none;
 
     &:hover {
       cursor: pointer;
+      color: orange;
+    }
+
+    &--active {
+      background-color: rgba($color: purple, $alpha: 0.35);
+
+      &:hover {
+        cursor: default;
+        color: purple;
+      }
     }
   }
 }

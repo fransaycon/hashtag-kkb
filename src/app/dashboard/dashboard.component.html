@@ -1,14 +1,28 @@
-<div class="content">
-  <router-outlet></router-outlet>
+<div class="container">
+  <div class="container__content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <nav class="navigation">
-  <a class="navigation__item" routerLink="users">
+  <a
+    class="navigation__item"
+    routerLink="users"
+    [routerLinkActive]="'navigation__item--active'"
+  >
     <mat-icon>person</mat-icon>
   </a>
-  <a class="navigation__item" routerLink="cart">
+  <a
+    class="navigation__item"
+    routerLink="cart"
+    [routerLinkActive]="'navigation__item--active'"
+  >
     <mat-icon>fastfood</mat-icon>
   </a>
-  <a class="navigation__item" routerLink="bill">
+  <a
+    class="navigation__item"
+    routerLink="bill"
+    [routerLinkActive]="'navigation__item--active'"
+  >
     <mat-icon>payment</mat-icon>
   </a>
 </nav>

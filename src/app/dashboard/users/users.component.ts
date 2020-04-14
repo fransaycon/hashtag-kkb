@@ -29,8 +29,10 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
-    this.userService.addUser(this.value);
-    this.value = '';
+    if (!!this.value) {
+      this.userService.addUser(this.value);
+      this.value = '';
+    }
   }
 
   removeUser(user: User) {
