@@ -1,6 +1,7 @@
 import User from './user.model';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Item } from './item.model';
+import { CartItem } from './cart-item.interface';
 
 @Injectable()
 export class UserService {
@@ -37,5 +38,22 @@ export class UserService {
     } else {
       alert('User was not found! Please try again.');
     }
+  }
+
+  getCartItems(): CartItem[] {
+    let items: CartItem[] = [];
+    this.users.forEach((user) => {
+      const cartItems: Item[] = user.getCart();
+      items = [
+        ...items,
+        ...cartItems.map((ci) => ({
+          userName: user.getName(),
+          name: ci.getName(),
+          quantity: ci.getQuantity(),
+        })),
+      ];
+    });
+
+    return items;
   }
 }

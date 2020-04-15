@@ -26,6 +26,15 @@ export class CartComponent implements OnInit {
   }
 
   submit() {
-    alert(this.selectedValue.getName());
+    if (this.selectedValue && this.itemNameInput && this.itemQuantityInput) {
+      this.userService.purchaseItem(
+        this.selectedValue,
+        this.itemNameInput,
+        this.itemQuantityInput
+      );
+      this.selectedValue = null;
+      this.itemNameInput = null;
+      this.itemQuantityInput = null;
+    }
   }
 }

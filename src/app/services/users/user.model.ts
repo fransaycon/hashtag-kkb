@@ -23,6 +23,10 @@ class User {
       this.cart.push(item);
     }
   }
+
+  getCart(): Item[] {
+    return this.cart;
+  }
 }
 
 export default User;
