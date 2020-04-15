@@ -1,0 +1,43 @@
+.cart {
+  display: flex;
+  flex: 1;
+
+  &__form {
+    flex-grow: 4;
+
+    &-item {
+      width: 100%;
+    }
+  }
+
+  &__submit {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-form {
+    width: 100%;
+    margin-bottom: -1.25rem;
+
+    &__button {
+      color: red;
+      font-size: 2rem;
+    }
+
+    &__item {
+      &-name {
+        width: 70%;
+      }
+      &-quantity {
+        margin-left: 0.33rem;
+        width: calc(30% - 0.33rem);
+      }
+
+      &--bottomless {
+        margin-bottom: -1.25rem;
+      }
+    }
+  }
+}

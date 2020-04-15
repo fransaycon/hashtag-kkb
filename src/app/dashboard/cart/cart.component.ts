@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { UserService } from 'src/app/services/users/user.service';
+import User from 'src/app/services/users/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-
-  constructor() { }
+  users: User[] = [];
+  userChangedSubscription: Subscription;
+  selectedValue: User;
+  itemNameInput: string;
+  itemQuantityInput: number;
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    this.users = this.userService.getUsers();
+    this.userChangedSubscription = this.userService.usersChanged.subscribe(
+      (users) => {
+        this.users = users;
+      }
+    );
   }
 
+  submit() {
+    alert(this.selectedValue.getName());
+  }
 }
