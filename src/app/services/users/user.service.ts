@@ -1,5 +1,6 @@
 import User from './user.model';
 import { Injectable, EventEmitter } from '@angular/core';
+import { Item } from './item.model';
 
 @Injectable()
 export class UserService {
@@ -23,5 +24,18 @@ export class UserService {
   removeUser(user: User): void {
     this.users = this.users.filter((u) => u.getName() !== user.getName());
     this.usersChanged.emit(this.users);
+  }
+
+  purchaseItem(user: User, name: string, quantity: number) {
+    const userIndex = this.users.findIndex(
+      (u) => u.getName() === user.getName()
+    );
+    if (userIndex >= 0) {
+      const item = new Item(name, quantity);
+      this.users[userIndex].addItemToCart(item);
+      this.usersChanged.emit(this.users);
+    } else {
+      alert('User was not found! Please try again.');
+    }
   }
 }
