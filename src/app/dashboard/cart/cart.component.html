@@ -36,3 +36,14 @@
     </button>
   </div>
 </div>
+<mat-list class="list">
+  <mat-list-item class="list__item" *ngFor="let cartItem of cartItems">
+    <span
+      >{{ cartItem.name }} x{{ cartItem.quantity }} -
+      {{ cartItem.userName }}</span
+    >
+    <button mat-button mat-icon-button aria-label="Remove cart from list">
+      <mat-icon class="list__button">cancel</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

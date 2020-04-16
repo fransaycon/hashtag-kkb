@@ -41,3 +41,22 @@
     }
   }
 }
+
+.list {
+  padding-right: 2.5rem;
+  height: 60vh;
+  overflow-y: auto;
+
+  &__item {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    word-break: break-word;
+  }
+
+  &__button {
+    color: red;
+    font-size: 1.25rem;
+  }
+}
