@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="form" appearance="outline">
     <mat-label>Kaninong order?</mat-label>
     <mat-select [(ngModel)]="data.item.user">
       <mat-option *ngFor="let user of data.users" [value]="user">{{
@@ -7,15 +7,15 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="form" appearance="outline">
     <mat-label>Pangalan ng Order</mat-label>
     <input matInput [(ngModel)]="data.item.name" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Ilan?</mat-label>
+  <mat-form-field class="form" appearance="outline">
+    <mat-label>Magkano?</mat-label>
     <input matInput type="number" [(ngModel)]="data.item.quantity" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="form" appearance="outline">
     <mat-label>Ilan?</mat-label>
     <input matInput type="number" [(ngModel)]="data.item.cost" />
   </mat-form-field>

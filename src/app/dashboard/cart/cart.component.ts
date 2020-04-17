@@ -21,7 +21,7 @@ export interface Item {
 export class CartComponent implements OnInit {
   users: User[] = [];
   userChangedSubscription: Subscription;
-  item: Item;
+  item: Item | {} = {};
   cartItems: CartItem[] = [];
   constructor(public dialog: MatDialog, private userService: UserService) {}
 

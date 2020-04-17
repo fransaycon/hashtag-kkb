@@ -7,6 +7,7 @@ import { UserService } from '../services/users/user.service';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [CartModalComponent],
@@ -17,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     FormsModule,
     MatSelectModule,
+    MatButtonModule,
   ],
   exports: [CartModalComponent],
 })
