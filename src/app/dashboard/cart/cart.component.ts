@@ -2,8 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
 import User from 'src/app/services/users/user.model';
 import { Subscription } from 'rxjs';
-import { Item } from 'src/app/services/users/item.model';
 import { CartItem } from 'src/app/services/users/cart-item.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { CartModalComponent } from 'src/app/shared/cart-modal/cart-modal.component';
+
+export interface Item {
+  user: User;
+  name: string;
+  quantity: number;
+  cost: number;
+}
 
 @Component({
   selector: 'app-cart',
@@ -13,11 +21,9 @@ import { CartItem } from 'src/app/services/users/cart-item.interface';
 export class CartComponent implements OnInit {
   users: User[] = [];
   userChangedSubscription: Subscription;
-  selectedValue: User;
-  itemNameInput: string;
-  itemQuantityInput: number;
+  item: Item;
   cartItems: CartItem[] = [];
-  constructor(private userService: UserService) {}
+  constructor(public dialog: MatDialog, private userService: UserService) {}
 
   ngOnInit(): void {
     this.users = this.userService.getUsers();
@@ -30,16 +36,20 @@ export class CartComponent implements OnInit {
     );
   }
 
-  submit() {
-    if (this.selectedValue && this.itemNameInput && this.itemQuantityInput) {
-      this.userService.purchaseItem(
-        this.selectedValue,
-        this.itemNameInput,
-        this.itemQuantityInput
-      );
-      this.selectedValue = null;
-      this.itemNameInput = null;
-      this.itemQuantityInput = null;
-    }
+  ngOnDestroy(): void {
+    this.userChangedSubscription.unsubscribe();
+  }
+
+  openCartModal(): void {
+    const dialogRef = this.dialog.open(CartModalComponent, {
+      width: '300px',
+      data: {
+        item: this.item,
+        users: this.users,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }

@@ -13,7 +13,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { UsersComponent } from './users/users.component';
 import { UserService } from '../services/users/user.service';
-import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatInputModule,
     MatListModule,
-    MatSelectModule,
   ],
 })
 export class DashboardModule {}
