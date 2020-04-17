@@ -23,6 +23,7 @@ export class CartComponent implements OnInit {
   userChangedSubscription: Subscription;
   item: Item | {} = {};
   cartItems: CartItem[] = [];
+  cost: number = 0;
   constructor(public dialog: MatDialog, private userService: UserService) {}
 
   ngOnInit(): void {

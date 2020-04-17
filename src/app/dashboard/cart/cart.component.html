@@ -1,1 +1,14 @@
-<button mat-button (click)="openCartModal()">ADD</button>
+<h2 class="header__text">#Anu-ano ang mga orders?</h2>
+<div class="header">
+  <div class="header__total">
+    <span class="total total__text">
+      TOTAL:
+    </span>
+    <span class="total total__cost"> {{ cost }} PHP </span>
+  </div>
+  <div class="header__submit">
+    <button mat-button mat-icon-button (click)="openCartModal()">
+      <mat-icon class="total__button">add_circle</mat-icon>
+    </button>
+  </div>
+</div>
