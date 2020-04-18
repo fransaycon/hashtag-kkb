@@ -4,7 +4,7 @@
     <span class="total total__text">
       TOTAL:
     </span>
-    <span class="total total__cost"> {{ cost }} PHP </span>
+    <span class="total total__cost"> PHP {{ total }} </span>
   </div>
   <div class="header__submit">
     <button mat-button mat-icon-button (click)="openCartModal()">
@@ -13,18 +13,18 @@
   </div>
 </div>
 <div class="cart">
-  <div class="cart__item">
+  <div class="cart__item" *ngFor="let cartItem of cart">
     <div class="cart__quantity">
       <div class="item__circle">
-        <span class="item__quantity">x1</span>
+        <span class="item__quantity">x{{ cartItem.item.getQuantity() }}</span>
       </div>
     </div>
     <div class="cart__description">
-      <span class="item__name">Frankie's Wings</span>
-      <span class="item__owner">Order ni: Franrey</span>
+      <span class="item__name">{{ cartItem.item.getName() }}</span>
+      <span class="item__owner">Order ni: {{ cartItem.user.getName() }}</span>
     </div>
     <div class="cart__cost">
-      <span class="item__cost">PHP 500</span>
+      <span class="item__cost">PHP {{ cartItem.item.getCost() }}</span>
     </div>
   </div>
 </div>

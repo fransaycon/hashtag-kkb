@@ -2,15 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
 import User from 'src/app/services/users/user.model';
 import { Subscription } from 'rxjs';
-import { CartItem } from 'src/app/services/users/cart-item.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CartModalComponent } from 'src/app/shared/cart-modal/cart-modal.component';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { CartItem } from 'src/app/services/cart/cart-item.interface';
+import { Item } from 'src/app/services/cart/item.model';
 
-export interface Item {
-  user: User;
+interface ItemData {
   name: string;
-  quantity: number;
   cost: number;
+  quantity: number;
+}
+
+export interface CartItemData {
+  user: User;
+  item: ItemData;
 }
 
 @Component({
@@ -20,19 +26,33 @@ export interface Item {
 })
 export class CartComponent implements OnInit {
   users: User[] = [];
+  cart: CartItem[];
   userChangedSubscription: Subscription;
-  item: Item | {} = {};
-  cartItems: CartItem[] = [];
-  cost: number = 0;
-  constructor(public dialog: MatDialog, private userService: UserService) {}
+  cartChangedSubscription: Subscription;
+  cartItemData: CartItemData | {} = {
+    item: {},
+  };
+  total: number;
+
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.users = this.userService.getUsers();
-    this.cartItems = this.userService.getCartItems();
+    this.cart = this.cartService.getCart();
+    this.total = this.cartService.getTotal();
     this.userChangedSubscription = this.userService.usersChanged.subscribe(
       (users) => {
         this.users = users;
-        this.cartItems = this.userService.getCartItems();
+      }
+    );
+    this.cartChangedSubscription = this.cartService.cartChanged.subscribe(
+      (cart) => {
+        this.cart = cart;
+        this.total = this.cartService.getTotal();
       }
     );
   }
@@ -45,12 +65,20 @@ export class CartComponent implements OnInit {
     const dialogRef = this.dialog.open(CartModalComponent, {
       width: '300px',
       data: {
-        item: this.item,
+        cartItemData: this.cartItemData,
         users: this.users,
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      if (!!result) {
+        const { item, user } = result.cartItemData;
+        if (!!user && !!item.name && !!item.quantity && !!item.cost) {
+          this.cartService.addToCart({
+            user: result.cartItemData.user,
+            item: new Item(item.name, item.quantity, item.cost),
+          });
+        }
+      }
     });
   }
 }

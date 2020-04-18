@@ -1,7 +1,6 @@
 import User from './user.model';
 import { Injectable, EventEmitter } from '@angular/core';
-import { Item } from './item.model';
-import { CartItem } from './cart-item.interface';
+import { Item } from '../cart/item.model';
 
 @Injectable()
 export class UserService {
@@ -27,33 +26,19 @@ export class UserService {
     this.usersChanged.emit(this.users);
   }
 
-  purchaseItem(user: User, name: string, quantity: number) {
+  addItemToCart(user: User, item: Item): void {
     const userIndex = this.users.findIndex(
       (u) => u.getName() === user.getName()
     );
-    if (userIndex >= 0) {
-      const item = new Item(name, quantity);
-      this.users[userIndex].addItemToCart(item);
-      this.usersChanged.emit(this.users);
-    } else {
-      alert('User was not found! Please try again.');
-    }
+    this.users[userIndex].addItemToCart(item);
+    this.usersChanged.emit(this.users);
   }
 
-  getCartItems(): CartItem[] {
-    let items: CartItem[] = [];
-    this.users.forEach((user) => {
-      const cartItems: Item[] = user.getCart();
-      items = [
-        ...items,
-        ...cartItems.map((ci) => ({
-          userName: user.getName(),
-          name: ci.getName(),
-          quantity: ci.getQuantity(),
-        })),
-      ];
-    });
-
-    return items;
+  removeItemFromCart(user: User, item: Item): void {
+    const userIndex = this.users.findIndex(
+      (u) => u.getName() === user.getName()
+    );
+    this.users[userIndex].removeItemFromCart(item);
+    this.usersChanged.emit(this.users);
   }
 }

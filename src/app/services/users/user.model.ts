@@ -1,8 +1,8 @@
-import { Item } from './item.model';
+import { Item } from '../cart/item.model';
 
 class User {
   private name: string = null;
-  private cart: Item[] = [];
+  private items: Item[] = [];
 
   constructor(name: string) {
     this.name = name;
@@ -13,19 +13,11 @@ class User {
   }
 
   addItemToCart(item: Item) {
-    const duplicateItemIndex: number = this.cart.findIndex(
-      (cartItem) => cartItem.getName() === item.getName()
-    );
-
-    if (duplicateItemIndex >= 0) {
-      this.cart[duplicateItemIndex].changeQuantity(item.getQuantity());
-    } else {
-      this.cart.push(item);
-    }
+    this.items.push(item);
   }
 
-  getCart(): Item[] {
-    return this.cart;
+  removeItemFromCart(item: Item) {
+    this.items = this.items.filter((i) => i.getName() !== item.getName());
   }
 }
 
