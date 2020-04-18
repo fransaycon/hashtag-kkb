@@ -2,6 +2,7 @@
   display: flex;
   flex: 1;
   align-items: center;
+  margin-bottom: 1rem;
 
   &__total {
     display: flex;
@@ -41,5 +42,86 @@
   &__button {
     color: purple;
     font-size: 2rem;
+  }
+}
+
+.cart {
+  display: flex;
+  flex: 1;
+  height: 65vh;
+  min-height: 35rem;
+  overflow-y: auto;
+  flex-direction: column;
+
+  & > :first-child {
+    margin-top: 0.33rem;
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 0.33rem;
+    align-items: center;
+  }
+
+  &__quantity {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 4;
+    justify-content: center;
+  }
+
+  &__cost {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    align-items: center;
+  }
+}
+
+.item {
+  &__circle {
+    border: 2px purple solid;
+    color: purple;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__quantity {
+    margin: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+  }
+
+  &__owner {
+    font-size: 1rem;
+  }
+
+  &__cost {
+    font-size: 1.5rem;
+  }
+}
+
+.bill {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    margin-top: 0.33rem;
+    font-size: 1.25rem;
   }
 }
