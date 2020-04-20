@@ -26,6 +26,16 @@
     <div class="cart__cost">
       <span class="item__cost">PHP {{ cartItem.item.getCost() }}</span>
     </div>
+    <div class="cart__delete">
+      <button
+        mat-button
+        mat-icon-button
+        aria-label="Remove user from list"
+        (click)="removeCartItem(cartItem)"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
 <div class="bill">

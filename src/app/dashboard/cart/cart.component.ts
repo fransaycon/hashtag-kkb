@@ -81,4 +81,8 @@ export class CartComponent implements OnInit {
       }
     });
   }
+
+  removeCartItem(cartItem: CartItem) {
+    this.cartService.removeFromCart(cartItem);
+  }
 }

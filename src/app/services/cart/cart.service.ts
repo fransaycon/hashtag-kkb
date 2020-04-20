@@ -19,7 +19,7 @@ export class CartService {
 
   removeFromCart(cartItem: CartItem) {
     this.cart = this.cart.filter(
-      (c) => c.item.getName() === cartItem.item.getName()
+      (c) => c.item.getId() !== cartItem.item.getId()
     );
     this.total -= cartItem.item.getTotalCost();
     this.userService.removeItemFromCart(cartItem.user, cartItem.item);

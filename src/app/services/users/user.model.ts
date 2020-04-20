@@ -17,7 +17,7 @@ class User {
   }
 
   removeItemFromCart(item: Item) {
-    this.items = this.items.filter((i) => i.getName() !== item.getName());
+    this.items = this.items.filter((i) => i.getId() !== item.getId());
   }
 }
 
