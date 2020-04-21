@@ -1,11 +1,12 @@
 import User from './user.model';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Item } from '../cart/item.model';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class UserService {
   private users: User[] = [];
-  usersChanged = new EventEmitter<User[]>();
+  usersChanged = new Subject<User[]>();
 
   getUsers(): User[] {
     return this.users;
@@ -15,7 +16,7 @@ export class UserService {
     const duplicateUser = this.users.filter((user) => user.getName() === name);
     if (!duplicateUser.length) {
       this.users = [...this.users, new User(name)];
-      this.usersChanged.emit(this.users);
+      this.usersChanged.next(this.users);
     } else {
       window.alert('Teka lang! May kapangalan ang dinagdag mo. Dapat wala.');
     }
@@ -23,7 +24,7 @@ export class UserService {
 
   removeUser(user: User): void {
     this.users = this.users.filter((u) => u.getName() !== user.getName());
-    this.usersChanged.emit(this.users);
+    this.usersChanged.next(this.users);
   }
 
   addItemToCart(user: User, item: Item): void {
@@ -31,7 +32,7 @@ export class UserService {
       (u) => u.getName() === user.getName()
     );
     this.users[userIndex].addItemToCart(item);
-    this.usersChanged.emit(this.users);
+    this.usersChanged.next(this.users);
   }
 
   removeItemFromCart(user: User, item: Item): void {
@@ -39,6 +40,6 @@ export class UserService {
       (u) => u.getName() === user.getName()
     );
     this.users[userIndex].removeItemFromCart(item);
-    this.usersChanged.emit(this.users);
+    this.usersChanged.next(this.users);
   }
 }

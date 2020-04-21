@@ -1,12 +1,13 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { UserService } from '../users/user.service';
 import { CartItem } from './cart-item.interface';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class CartService {
   cart: CartItem[] = [];
-  cartChanged = new EventEmitter<CartItem[]>();
-  total: number = 0;
+  cartChanged = new Subject<CartItem[]>();
+  total = 0;
 
   constructor(private userService: UserService) {}
 
@@ -14,7 +15,7 @@ export class CartService {
     this.cart.push(cartItem);
     this.total += cartItem.item.getTotalCost();
     this.userService.addItemToCart(cartItem.user, cartItem.item);
-    this.cartChanged.emit(this.cart);
+    this.cartChanged.next(this.cart);
   }
 
   removeFromCart(cartItem: CartItem) {
@@ -23,7 +24,7 @@ export class CartService {
     );
     this.total -= cartItem.item.getTotalCost();
     this.userService.removeItemFromCart(cartItem.user, cartItem.item);
-    this.cartChanged.emit(this.cart);
+    this.cartChanged.next(this.cart);
   }
 
   getCart(): CartItem[] {

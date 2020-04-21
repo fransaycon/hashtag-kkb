@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
 import User from 'src/app/services/users/user.model';
 import { Subscription } from 'rxjs';
@@ -24,7 +24,7 @@ export interface CartItemData {
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   users: User[] = [];
   cart: CartItem[];
   userChangedSubscription: Subscription;
