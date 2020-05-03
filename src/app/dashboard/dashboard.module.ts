@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 
 import { BillComponent } from './bill/bill.component';
 import { CartComponent } from './cart/cart.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
@@ -26,12 +26,13 @@ import { CartService } from '../services/cart/cart.service';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatIconModule,
     FormsModule,
     MatButtonModule,
     MatIconModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
+    ReactiveFormsModule,
   ],
 })
 export class DashboardModule {}

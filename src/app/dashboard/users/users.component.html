@@ -1,24 +1,21 @@
 <h2 class="header">#Sinu-sino kayo?</h2>
-<div class="add-bar">
+<form class="add-bar" [formGroup]="userForm" (ngSubmit)="addUser()">
   <mat-form-field
     appearance="outline"
     class="add-bar__form"
-    (submit)="addUser()"
   >
     <mat-label>Isulat ang Pangalan</mat-label>
     <input
       matInput
-      (keydown.enter)="addUser()"
-      (keydown.esc)="value = ''"
-      [(ngModel)]="value"
+      [formControl]="nameControl"
     />
     <button
       mat-button
-      *ngIf="value"
+      *ngIf="nameControl.value"
       matSuffix
       mat-icon-button
       aria-label="Clear"
-      (click)="value = ''"
+      type="reset"
     >
       <mat-icon>close</mat-icon>
     </button>
@@ -27,12 +24,12 @@
     mat-button
     mat-icon-button
     aria-label="Add user to list"
-    [disabled]="!value"
-    (click)="addUser()"
+    [disabled]="!userForm.valid"
+    type="submit"
   >
     <mat-icon class="add-bar__button">add_circle</mat-icon>
   </button>
-</div>
+</form>
 <mat-list class="list">
   <mat-list-item class="list__item" *ngFor="let user of users">
     <div class="list__item">

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
 import User from 'src/app/services/users/user.model';
 import { Subscription } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,8 @@ import { Subscription } from 'rxjs';
 export class UsersComponent implements OnInit, OnDestroy {
   users: User[];
   usersChangedSubscription: Subscription;
-  value = '';
+  userForm: FormGroup;
+  nameControl = new FormControl('');
 
   constructor(private userService: UserService) {}
 
@@ -22,6 +24,9 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.users = users;
       }
     );
+    this.userForm = new FormGroup({
+      name: this.nameControl,
+    });
   }
 
   ngOnDestroy(): void {
@@ -29,10 +34,14 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   addUser() {
-    if (!!this.value) {
-      this.userService.addUser(this.value);
-      this.value = '';
+    if (!!this.nameControl.value) {
+      this.userService.addUser(this.nameControl.value);
+      this.onCancel();
     }
+  }
+
+  onCancel() {
+    this.userForm.reset();
   }
 
   removeUser(user: User) {
